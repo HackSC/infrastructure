@@ -1,53 +1,53 @@
 class Participant {
   constructor({ name, email, attributes }) {
-		this.name = name | '';
-		this.email = email | '';
-		this.attributes = attributes | {};
+		this._name = name | '';
+		this._email = email | '';
+		this._attributes = attributes | {};
   }
 
-	setName(name) {
-		this.name = name;
+	set name(name) {
+		this._name = name;
 		return true; // set successful
 	}
 
-	setEmail(email) {
+	set email(email) {
 		// todo: check if email is valid
-		this.email = email;
+		this._email = email;
 		return true; // set successful
 	}
 
-	addAttribute(key, attribute) {
+	set attribute(key, attribute) {
 		// todo: check if exists
 		// todo: check if attribute is valid
 		this.attributes[key] = attribute;
 		return true;
 	}
 
-	getAttribute(key) {
+	get attribute(key) {
 		// todo: check if exists
-		return this.attributes[key];
+		return this._attributes[key];
 	}
 
-	getAttributes() {
-		return Object.keys(this.attributes);
+	get attributes() {
+		return Object.keys(this._attributes);
 	}
 
-	removeAttribute(key) {
+	set removeAttribute(key) {
 		// todo: check if exists
-		delete this.attributes[key];
+		delete this._attributes[key];
 		return true;
 	}
 
-	replaceAttribute(key, attribute) {
+	set replaceAttribute(key, attribute) {
 		if (removeAttribute(key))
 			return addAttribute(attribute);
 	}
 
 	serialize() {
 		return {
-			name: this.name, // string
-			email: this.email, // string
-			attributes: this.attributes // object
+			name: this._name, // string
+			email: this._email, // string
+			attributes: this._attributes // object
 		}
 	}
 }
